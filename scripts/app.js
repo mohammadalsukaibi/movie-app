@@ -282,44 +282,44 @@ function test(id){
                 localStorage.setItem("favorites", JSON.stringify(oldFavorites))
                 switch (movie_category) {
                     case 'movies': 
-                    if(window.location.href == "http://127.0.0.1:5500/index.html"){
+                    if(window.location.href.indexOf("index.html") > -1){
                         cards = document.querySelector('.m-cards')
                         cards.innerHTML = ""
                         movies.slice(1,5).map(showMovies);
                         showFirstMovie(topMovie);
-                    }else if(window.location.href == "http://127.0.0.1:5500/popular.html"){
+                    }else if(window.location.href.indexOf("popular.html") > -1){
                         cards = document.querySelector('.popular-cards')
                         cards.innerHTML = ""
                         movies.map(showMovies);
-                    }else if(window.location.href == "http://127.0.0.1:5500/movie.html"){
+                    }else if(window.location.href.indexOf("movie.html") > -1){
                         document.querySelector('.detail-like').innerHTML = `<i class="fas fa-heart mx-auto"></i>`
                         
                     }
                     break;
                  
                     case 'top_movies': 
-                    if(window.location.href == "http://127.0.0.1:5500/index.html"){
+                    if(window.location.href.indexOf("index.html") > -1){
                             top_cards.innerHTML = ""
                             topMovies.slice(0,4).map(showTopMovies);
-                    }else if(window.location.href == "http://127.0.0.1:5500/top.html"){
+                    }else if(window.location.href.indexOf("top.html") > -1){
                         cards = document.querySelector('.top-page-cards')
                         cards.innerHTML = ""
                         topMovies.map(showTopMovies);
-                    }else if(window.location.href == "http://127.0.0.1:5500/movie.html"){
+                    }else if(window.location.href.indexOf("movie.html") > -1){
                         document.querySelector('.detail-like').innerHTML = `<i class="fas fa-heart mx-auto"></i>`
                         
                     }
                     break;
                  
                     case 'horror_movies': 
-                    if(window.location.href == "http://127.0.0.1:5500/index.html"){
+                    if(window.location.href.indexOf("index.html") > -1){
                         horror_cards.innerHTML = ""
                         horrorMovies.slice(0,4).map(showHorrorMovies);
-                    }else if(window.location.href == "http://127.0.0.1:5500/horror.html"){
+                    }else if(window.location.href.indexOf("horror.html") > -1){
                         cards = document.querySelector('.horror-page-cards')
                         cards.innerHTML = ""
                         horrorMovies.map(showHorrorMovies);
-                    }else if(window.location.href == "http://127.0.0.1:5500/movie.html"){
+                    }else if(window.location.href.indexOf("movie.html") > -1){
                         document.querySelector('.detail-like').innerHTML = `<i class="fas fa-heart mx-auto"></i>`
                         
                     }
@@ -342,44 +342,44 @@ function test(id){
             // change color of the button
             switch (movie_category) {
                 case 'movies': 
-                if(window.location.href == "http://127.0.0.1:5500/index.html"){
+                if(window.location.href.indexOf("index.html") > -1){
                     cards = document.querySelector('.m-cards')
                     cards.innerHTML = ""
                     movies.slice(1,5).map(showMovies);
                     showFirstMovie(topMovie);
-                }else if(window.location.href == "http://127.0.0.1:5500/popular.html"){
+                }else if(window.location.href.indexOf("popular.html") > -1){
                     cards = document.querySelector('.popular-cards')
                     cards.innerHTML = ""
                     movies.map(showMovies);
-                }else if(window.location.href == "http://127.0.0.1:5500/movie.html"){
+                }else if(window.location.href.indexOf("movie.html") > -1){
                     document.querySelector('.detail-like').innerHTML = `<i class="fas fa-heart mx-auto" style="color: Tomato"></i>`
                     
                 }
                 break;
              
                 case 'top_movies': 
-                if(window.location.href == "http://127.0.0.1:5500/index.html"){
+                if(window.location.href.indexOf("index.html") > -1){
                         top_cards.innerHTML = ""
                         topMovies.slice(0,4).map(showTopMovies);
-                }else if(window.location.href == "http://127.0.0.1:5500/top.html"){
+                }else if(window.location.href.indexOf("top.html") > -1){
                     cards = document.querySelector('.top-page-cards')
                     cards.innerHTML = ""
                     topMovies.map(showTopMovies);
-                }else if(window.location.href == "http://127.0.0.1:5500/movie.html"){
+                }else if(window.location.href.indexOf("movie.html") > -1){
                     document.querySelector('.detail-like').innerHTML = `<i class="fas fa-heart mx-auto" style="color: Tomato"></i>`
                     
                 }
                 break;
              
                 case 'horror_movies': 
-                if(window.location.href == "http://127.0.0.1:5500/index.html"){
+                if(window.location.href.indexOf("index.html") > -1){
                     horror_cards.innerHTML = ""
                     horrorMovies.slice(0,4).map(showHorrorMovies);
-                }else if(window.location.href == "http://127.0.0.1:5500/horror.html"){
+                }else if(window.location.href.indexOf("horror.html") > -1){
                     cards = document.querySelector('.horror-page-cards')
                     cards.innerHTML = ""
                     horrorMovies.map(showHorrorMovies);
-                }else if(window.location.href == "http://127.0.0.1:5500/movie.html"){
+                }else if(window.location.href.indexOf("movie.html") > -1){
                     document.querySelector('.detail-like').innerHTML = `<i class="fas fa-heart mx-auto" style="color: Tomato"></i>`
                     
                 }
@@ -407,45 +407,45 @@ function test(id){
         console.log(movie_category)
         switch (movie_category) {
             case 'movies': 
-            if(window.location.href == "http://127.0.0.1:5500/index.html"){
+            if(window.location.href.indexOf("index.html") > -1){
                 console.log("gdgfds")
                 cards = document.querySelector('.m-cards')
                 cards.innerHTML = ""
                 movies.slice(1,5).map(showMovies);
                 showFirstMovie(topMovie);
-            }else if(window.location.href == "http://127.0.0.1:5500/popular.html"){
+            }else if(window.location.href.indexOf("popular.html") > -1){
                 cards = document.querySelector('.popular-cards')
                 cards.innerHTML = ""
                 movies.map(showMovies);
-            }else if(window.location.href == "http://127.0.0.1:5500/movie.html"){
+            }else if(window.location.href.indexOf("movie.html") > -1){
                 document.querySelector('.detail-like').innerHTML = `<i class="fas fa-heart mx-auto" style="color: Tomato"></i>`
                 
             }
             break;
          
             case 'top_movies': 
-            if(window.location.href == "http://127.0.0.1:5500/index.html"){
+            if(window.location.href.indexOf("index.html") > -1){
                     top_cards.innerHTML = ""
                     topMovies.slice(0,4).map(showTopMovies);
-            }else if(window.location.href == "http://127.0.0.1:5500/top.html"){
+            }else if(window.location.href.indexOf("top.html") > -1){
                 cards = document.querySelector('.top-page-cards')
                 cards.innerHTML = ""
                 topMovies.map(showTopMovies);
-            }else if(window.location.href == "http://127.0.0.1:5500/movie.html"){
+            }else if(window.location.href.indexOf("movie.html") > -1){
                 document.querySelector('.detail-like').innerHTML = `<i class="fas fa-heart mx-auto" style="color: Tomato"></i>`
                 
             }
             break;
          
             case 'horror_movies': 
-            if(window.location.href == "http://127.0.0.1:5500/index.html"){
+            if(window.location.href.indexOf("index.html") > -1){
                 horror_cards.innerHTML = ""
                 horrorMovies.slice(0,4).map(showHorrorMovies);
-            }else if(window.location.href == "http://127.0.0.1:5500/horror.html"){
+            }else if(window.location.href.indexOf("horror.html") > -1){
                 cards = document.querySelector('.horror-page-cards')
                 cards.innerHTML = ""
                 horrorMovies.map(showHorrorMovies);
-            }else if(window.location.href == "http://127.0.0.1:5500/movie.html"){
+            }else if(window.location.href.indexOf("movie.html") > -1){
                 document.querySelector('.detail-like').innerHTML = `<i class="fas fa-heart mx-auto" style="color: Tomato"></i>`
                 
             }
@@ -469,9 +469,9 @@ function test(id){
 // ui
 function showMovies(item){
     let cards;
-    if(window.location.href == "http://127.0.0.1:5500/index.html"){
+    if(window.location.href.indexOf("index.html") > -1){
         cards = document.querySelector('.m-cards')
-    }else if(window.location.href == "http://127.0.0.1:5500/popular.html"){
+    }else if(window.location.href.indexOf("popular.html") > -1){
         cards = document.querySelector('.popular-cards')
     }   
     
@@ -492,7 +492,7 @@ function showMovies(item){
 
 function showFirstMovie(item){
     let cards;
-    if(window.location.href == "http://127.0.0.1:5500/index.html"){
+    if(window.location.href.indexOf("index.html") > -1){
         document.querySelector('.home-hero').innerHTML = 
         `
         <img src="https://image.tmdb.org/t/p/original${item.backdrop_path}" alt="" class="h-full w-full object-cover absolute">
@@ -514,9 +514,9 @@ function showFirstMovie(item){
 
 function showTopMovies(item){
     let cards;
-    if(window.location.href == "http://127.0.0.1:5500/index.html"){
+    if(window.location.href.indexOf("index.html") > -1){
         cards = document.querySelector('.top-cards')
-    }else if(window.location.href == "http://127.0.0.1:5500/top.html"){
+    }else if(window.location.href.indexOf("top.html") > -1){
         cards = document.querySelector('.top-page-cards')
     }
     
@@ -537,9 +537,9 @@ function showTopMovies(item){
 
 function showHorrorMovies(item){
     let cards;
-    if(window.location.href == "http://127.0.0.1:5500/index.html"){
+    if(window.location.href.indexOf("index.html") > -1){
         cards = document.querySelector('.horror-cards')
-    }else if(window.location.href == "http://127.0.0.1:5500/horror.html"){
+    }else if(window.location.href.indexOf("horror.html") > -1){
         cards = document.querySelector('.horror-page-cards')
     }
         
