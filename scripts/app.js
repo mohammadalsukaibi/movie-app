@@ -187,7 +187,7 @@ function movieDetailsPage(){
                     ${item.genres.map(showGenres)}
                 </span>
                 <div class="flex justify-center">
-                    <button onclick="test(${item.id})" class="detail-like favoriteBtn w-14 flex items-center px-2 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-900 rounded-md hover:bg-indigo-500 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-80">
+                    <button onclick="like(${item.id})" class="detail-like favoriteBtn w-14 flex items-center px-2 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-900 rounded-md hover:bg-indigo-500 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-80">
                                             ${containsObject(item, oldFavorites) ? `<i class="fas fa-heart mx-auto" style="color: Tomato"></i>` : `<i class="fas fa-heart mx-auto"></i>`}
                     </button>
                     ${position !== false ? `<button onclick="addRating(${item.id})" class=" ratingBtn ml-4 inline-flex text-white bg-blue-900 border-0 py-2 px-6 focus:outline-none hover:bg-gray-700 hover:text-white rounded text-lg">${rated_movies[position].rating}</button>` : `<button onclick="addRating(${item.id})" class="ratingBtn ml-4 inline-flex text-white bg-blue-900 border-0 py-2 px-6 focus:outline-none hover:bg-gray-700 hover:text-white rounded text-lg">Add your rating</button>`}
@@ -246,7 +246,7 @@ document.querySelector('.searchBtn').addEventListener('keypress', function (e) {
 
 
 // add to favorites
-function test(id){
+function like(id){
 
     let cards = document.querySelector('.m-cards')
     let top_cards = document.querySelector('.top-cards')
@@ -283,46 +283,46 @@ function test(id){
                 localStorage.setItem("favorites", JSON.stringify(oldFavorites))
                 switch (movie_category) {
                     case 'movies': 
-                    if(window.location.href.indexOf("index.html") > -1){
-                        cards = document.querySelector('.m-cards')
-                        cards.innerHTML = ""
-                        movies.slice(1,5).map(showMovies);
-                        showFirstMovie(topMovie);
-                    }else if(window.location.href.indexOf("popular.html") > -1){
+                    if(window.location.href.indexOf("popular.html") > -1){
                         cards = document.querySelector('.popular-cards')
                         cards.innerHTML = ""
                         movies.map(showMovies);
                     }else if(window.location.href.indexOf("movie.html") > -1){
                         document.querySelector('.detail-like').innerHTML = `<i class="fas fa-heart mx-auto"></i>`
                         
+                    }else{
+                        cards = document.querySelector('.m-cards')
+                        cards.innerHTML = ""
+                        movies.slice(1,5).map(showMovies);
+                        showFirstMovie(topMovie);
                     }
                     break;
                  
                     case 'top_movies': 
-                    if(window.location.href.indexOf("index.html") > -1){
-                            top_cards.innerHTML = ""
-                            topMovies.slice(0,4).map(showTopMovies);
-                    }else if(window.location.href.indexOf("top.html") > -1){
+                    if(window.location.href.indexOf("top.html") > -1){
                         cards = document.querySelector('.top-page-cards')
                         cards.innerHTML = ""
                         topMovies.map(showTopMovies);
                     }else if(window.location.href.indexOf("movie.html") > -1){
                         document.querySelector('.detail-like').innerHTML = `<i class="fas fa-heart mx-auto"></i>`
                         
+                    }else{
+                        top_cards.innerHTML = ""
+                        topMovies.slice(0,4).map(showTopMovies);
                     }
                     break;
                  
                     case 'horror_movies': 
-                    if(window.location.href.indexOf("index.html") > -1){
-                        horror_cards.innerHTML = ""
-                        horrorMovies.slice(0,4).map(showHorrorMovies);
-                    }else if(window.location.href.indexOf("horror.html") > -1){
+                    if(window.location.href.indexOf("horror.html") > -1){
                         cards = document.querySelector('.horror-page-cards')
                         cards.innerHTML = ""
                         horrorMovies.map(showHorrorMovies);
                     }else if(window.location.href.indexOf("movie.html") > -1){
                         document.querySelector('.detail-like').innerHTML = `<i class="fas fa-heart mx-auto"></i>`
                         
+                    }else{
+                        horror_cards.innerHTML = ""
+                        horrorMovies.slice(0,4).map(showHorrorMovies);
                     }
                     break;
 
@@ -343,46 +343,46 @@ function test(id){
             // change color of the button
             switch (movie_category) {
                 case 'movies': 
-                if(window.location.href.indexOf("index.html") > -1){
-                    cards = document.querySelector('.m-cards')
-                    cards.innerHTML = ""
-                    movies.slice(1,5).map(showMovies);
-                    showFirstMovie(topMovie);
-                }else if(window.location.href.indexOf("popular.html") > -1){
+                if(window.location.href.indexOf("popular.html") > -1){
                     cards = document.querySelector('.popular-cards')
                     cards.innerHTML = ""
                     movies.map(showMovies);
                 }else if(window.location.href.indexOf("movie.html") > -1){
                     document.querySelector('.detail-like').innerHTML = `<i class="fas fa-heart mx-auto" style="color: Tomato"></i>`
                     
+                }else{
+                    cards = document.querySelector('.m-cards')
+                    cards.innerHTML = ""
+                    movies.slice(1,5).map(showMovies);
+                    showFirstMovie(topMovie);
                 }
                 break;
              
                 case 'top_movies': 
-                if(window.location.href.indexOf("index.html") > -1){
-                        top_cards.innerHTML = ""
-                        topMovies.slice(0,4).map(showTopMovies);
-                }else if(window.location.href.indexOf("top.html") > -1){
+                if(window.location.href.indexOf("top.html") > -1){
                     cards = document.querySelector('.top-page-cards')
                     cards.innerHTML = ""
                     topMovies.map(showTopMovies);
                 }else if(window.location.href.indexOf("movie.html") > -1){
                     document.querySelector('.detail-like').innerHTML = `<i class="fas fa-heart mx-auto" style="color: Tomato"></i>`
                     
+                }else{
+                    top_cards.innerHTML = ""
+                    topMovies.slice(0,4).map(showTopMovies);
                 }
                 break;
              
                 case 'horror_movies': 
-                if(window.location.href.indexOf("index.html") > -1){
-                    horror_cards.innerHTML = ""
-                    horrorMovies.slice(0,4).map(showHorrorMovies);
-                }else if(window.location.href.indexOf("horror.html") > -1){
+                if(window.location.href.indexOf("horror.html") > -1){
                     cards = document.querySelector('.horror-page-cards')
                     cards.innerHTML = ""
                     horrorMovies.map(showHorrorMovies);
                 }else if(window.location.href.indexOf("movie.html") > -1){
                     document.querySelector('.detail-like').innerHTML = `<i class="fas fa-heart mx-auto" style="color: Tomato"></i>`
                     
+                }else{
+                    horror_cards.innerHTML = ""
+                    horrorMovies.slice(0,4).map(showHorrorMovies);
                 }
                 break;
 
@@ -405,50 +405,48 @@ function test(id){
         oldFavorites.push(obj)
         localStorage.setItem("favorites", JSON.stringify(oldFavorites))
         // change color of the button
-        console.log(movie_category)
         switch (movie_category) {
             case 'movies': 
-            if(window.location.href.indexOf("index.html") > -1){
-                console.log("gdgfds")
-                cards = document.querySelector('.m-cards')
-                cards.innerHTML = ""
-                movies.slice(1,5).map(showMovies);
-                showFirstMovie(topMovie);
-            }else if(window.location.href.indexOf("popular.html") > -1){
+            if(window.location.href.indexOf("popular.html") > -1){
                 cards = document.querySelector('.popular-cards')
                 cards.innerHTML = ""
                 movies.map(showMovies);
             }else if(window.location.href.indexOf("movie.html") > -1){
                 document.querySelector('.detail-like').innerHTML = `<i class="fas fa-heart mx-auto" style="color: Tomato"></i>`
                 
+            }else{
+                cards = document.querySelector('.m-cards')
+                cards.innerHTML = ""
+                movies.slice(1,5).map(showMovies);
+                showFirstMovie(topMovie);
             }
             break;
          
             case 'top_movies': 
-            if(window.location.href.indexOf("index.html") > -1){
-                    top_cards.innerHTML = ""
-                    topMovies.slice(0,4).map(showTopMovies);
-            }else if(window.location.href.indexOf("top.html") > -1){
+            if(window.location.href.indexOf("top.html") > -1){
                 cards = document.querySelector('.top-page-cards')
                 cards.innerHTML = ""
                 topMovies.map(showTopMovies);
             }else if(window.location.href.indexOf("movie.html") > -1){
                 document.querySelector('.detail-like').innerHTML = `<i class="fas fa-heart mx-auto" style="color: Tomato"></i>`
                 
+            }else{
+                top_cards.innerHTML = ""
+                topMovies.slice(0,4).map(showTopMovies);
             }
             break;
          
             case 'horror_movies': 
-            if(window.location.href.indexOf("index.html") > -1){
-                horror_cards.innerHTML = ""
-                horrorMovies.slice(0,4).map(showHorrorMovies);
-            }else if(window.location.href.indexOf("horror.html") > -1){
+            if(window.location.href.indexOf("horror.html") > -1){
                 cards = document.querySelector('.horror-page-cards')
                 cards.innerHTML = ""
                 horrorMovies.map(showHorrorMovies);
             }else if(window.location.href.indexOf("movie.html") > -1){
                 document.querySelector('.detail-like').innerHTML = `<i class="fas fa-heart mx-auto" style="color: Tomato"></i>`
                 
+            }else{
+                horror_cards.innerHTML = ""
+                horrorMovies.slice(0,4).map(showHorrorMovies);
             }
             break;
 
@@ -470,11 +468,11 @@ function test(id){
 // ui
 function showMovies(item){
     let cards;
-    if(window.location.href.indexOf("index.html") > -1){
-        cards = document.querySelector('.m-cards')
-    }else if(window.location.href.indexOf("popular.html") > -1){
+    if(window.location.href.indexOf("popular.html") > -1){
         cards = document.querySelector('.popular-cards')
-    }   
+    }else{
+        cards = document.querySelector('.m-cards')
+    }
     
 
     cards.innerHTML += `<div class="xl:w-1/4 md:w-1/2 p-4 mx-auto">
@@ -484,7 +482,7 @@ function showMovies(item){
                                 </a>
                                 <div class="flex flex-col md:flex-row space-x-4 justify-between">
                                     <h2 class="h-14 text-lg text-white font-medium title-font mb-4">${item.title ? item.title : item.name}</h2>
-                                    <button onclick="test(${item.id})" class="favoriteBtn w-10 h-10 hidden md:block flex-none flex items-center px-2 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-900 rounded-md hover:bg-indigo-500 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-80">
+                                    <button onclick="like(${item.id})" class="favoriteBtn w-10 h-10 hidden md:block flex-none flex items-center px-2 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-900 rounded-md hover:bg-indigo-500 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-80">
                                         ${containsObject(item, oldFavorites) ? `<i class="fas fa-heart mx-auto" style="color: Tomato"></i>` : `<i class="fas fa-heart mx-auto"></i>`}
                                     </button>
                                 </div>
@@ -496,24 +494,22 @@ function showMovies(item){
 
 function showFirstMovie(item){
     let cards;
-    if(window.location.href.indexOf("index.html") > -1){
-        document.querySelector('.home-hero').innerHTML = 
-        `
-        <img src="https://image.tmdb.org/t/p/original${item.backdrop_path}" alt="" class="h-full w-full object-cover absolute">
-        <div class="w-full h-full opacity-90 bg-gradient-to-r from-black via-black to-black md:to-transparent absolute"></div>
-        <div class="absolute md:w-1/2 h-full flex flex-col space-y-10 p-5 md:pl-10 justify-center">
-            <h1 class="text-white text-5xl uppercase">${item.title ? item.title : item.name}</h1>
-            <p class="mb-8 leading-relaxed">${item.overview}</p>
-            <a href='javascript:;' onclick='test(${item.id})' class="bg-blue-900 h-10 w-40 justify-center rounded-xl flex items-center space-x-2">
-                <button  class="favoriteBtn flex items-center font-medium tracking-wide text-white capitalize transition-colors duration-200 transform rounded-md focus:outline-none">
-                    ${containsObject(item, oldFavorites) ? `<i class="fas fa-heart mx-auto" style="color: Tomato"></i>` : `<i class="fas fa-heart mx-auto"></i>`}
-                </button>
-                <h3 class="text-white ">Add to favorites</h3>
-            </a>
-            
-        </div>
-        `
-    }
+    document.querySelector('.home-hero').innerHTML = 
+    `
+    <img src="https://image.tmdb.org/t/p/original${item.backdrop_path}" alt="" class="h-full w-full object-cover absolute">
+    <div class="w-full h-full opacity-90 bg-gradient-to-r from-black via-black to-black md:to-transparent absolute"></div>
+    <div class="absolute md:w-1/2 h-full flex flex-col space-y-10 p-5 md:pl-10 justify-center">
+        <h1 class="text-white text-5xl uppercase">${item.title ? item.title : item.name}</h1>
+        <p class="mb-8 leading-relaxed">${item.overview}</p>
+        <a href='javascript:;' onclick='like(${item.id})' class="bg-blue-900 h-10 w-40 justify-center rounded-xl flex items-center space-x-2">
+            <button  class="favoriteBtn flex items-center font-medium tracking-wide text-white capitalize transition-colors duration-200 transform rounded-md focus:outline-none">
+                ${containsObject(item, oldFavorites) ? `<i class="fas fa-heart mx-auto" style="color: Tomato"></i>` : `<i class="fas fa-heart mx-auto"></i>`}
+            </button>
+            <h3 class="text-white ">Add to favorites</h3>
+        </a>
+        
+    </div>
+    `
     
     
     
@@ -521,10 +517,10 @@ function showFirstMovie(item){
 
 function showTopMovies(item){
     let cards;
-    if(window.location.href.indexOf("index.html") > -1){
-        cards = document.querySelector('.top-cards')
-    }else if(window.location.href.indexOf("top.html") > -1){
+    if(window.location.href.indexOf("top.html") > -1){
         cards = document.querySelector('.top-page-cards')
+    }else{
+        cards = document.querySelector('.top-cards')
     }
     
     
@@ -535,7 +531,7 @@ function showTopMovies(item){
                                 </a>
                                 <div class="flex flex-col md:flex-row space-x-4 justify-between">
                                     <h2 class="h-14 text-lg text-white font-medium title-font mb-4">${item.title ? item.title : item.name}</h2>
-                                    <button onclick="test(${item.id})" class="favoriteBtn w-10 h-10 hidden md:block flex-none flex items-center px-2 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-900 rounded-md hover:bg-indigo-500 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-80">
+                                    <button onclick="like(${item.id})" class="favoriteBtn w-10 h-10 hidden md:block flex-none flex items-center px-2 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-900 rounded-md hover:bg-indigo-500 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-80">
                                         ${containsObject(item, oldFavorites) ? `<i class="fas fa-heart mx-auto" style="color: Tomato"></i>` : `<i class="fas fa-heart mx-auto"></i>`}
                                     </button>
                                 </div>
@@ -547,10 +543,10 @@ function showTopMovies(item){
 
 function showHorrorMovies(item){
     let cards;
-    if(window.location.href.indexOf("index.html") > -1){
-        cards = document.querySelector('.horror-cards')
-    }else if(window.location.href.indexOf("horror.html") > -1){
+    if(window.location.href.indexOf("horror.html") > -1){
         cards = document.querySelector('.horror-page-cards')
+    }else{
+        cards = document.querySelector('.horror-cards')
     }
         
     cards.innerHTML += `<div class="xl:w-1/4 md:w-1/2 p-4 mx-auto">
@@ -560,7 +556,7 @@ function showHorrorMovies(item){
                                 </a>
                                 <div class="flex flex-col md:flex-row space-x-4 justify-between">
                                     <h2 class="h-14 text-lg text-white font-medium title-font mb-4">${item.title ? item.title : item.name}</h2>
-                                    <button onclick="test(${item.id})" class="favoriteBtn w-10 h-10 hidden md:block flex-none flex items-center px-2 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-900 rounded-md hover:bg-indigo-500 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-80">
+                                    <button onclick="like(${item.id})" class="favoriteBtn w-10 h-10 hidden md:block flex-none flex items-center px-2 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-900 rounded-md hover:bg-indigo-500 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-80">
                                         ${containsObject(item, oldFavorites) ? `<i class="fas fa-heart mx-auto" style="color: Tomato"></i>` : `<i class="fas fa-heart mx-auto"></i>`}
                                     </button>
                                 </div>
@@ -579,7 +575,7 @@ function showCustomMovies(item){
                                     <img class="h-full w-64 mx-auto rounded object-cover object-center mb-6" src="https://image.tmdb.org/t/p/w500${item.poster_path}" alt="content">
                                 </a>
                                 <h2 class="h-14 text-lg text-white font-medium title-font mb-4">${item.title ? item.title : item.name}</h2>
-                                <button onclick="test(${item.id})" class="favoriteBtn w-10 flex items-center px-2 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-900 rounded-md hover:bg-indigo-500 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-80">
+                                <button onclick="like(${item.id})" class="favoriteBtn w-10 flex items-center px-2 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-900 rounded-md hover:bg-indigo-500 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-80">
                                     ${containsObject(item, oldFavorites) ? `<i class="fas fa-heart mx-auto" style="color: Tomato"></i>` : `<i class="fas fa-heart mx-auto"></i>`}
                                 </button>
                             </div>
