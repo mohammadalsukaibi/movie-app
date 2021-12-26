@@ -9,19 +9,18 @@
   <title>Movie app</title>
   <!-- ... -->
 </head>
-<body class="bg-gray-800">
+<body class="bg-black">
     <!-- navbar -->
 
-    <nav class="bg-gray-700 text-white shadow rounded-xl container mx-auto md:mt-5">
+    <nav class="bg-gray-900 bg-opacity-75 text-white z-40 inset-x-0">
         <div class="container px-6 py-3 mx-auto md:flex">
             <div class="flex items-center justify-between">
                 <div class="md:hidden">
                     <a class="text-2xl font-bold lg:text-3xl" href="#">Movies</a>
                 </div>
-                
                 <!-- Mobile menu button -->
                 <div class="flex md:hidden">
-                    <button type="button" class="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400" aria-label="toggle menu">
+                    <button type="button" class=" navBtn text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400" aria-label="toggle menu">
                         <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current">
                             <path fill-rule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"></path>
                         </svg>
@@ -30,12 +29,13 @@
             </div>
 
             <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
-            <div class="w-full md:flex md:items-center md:justify-between">
+            <div class="navInfo w-full md:flex md:items-center md:justify-between hidden">
                 <a class="hidden md:inline-block text-2xl font-bold lg:text-3xl" href="index.html">Movies</a>
-                <div class="flex flex-col px-2 py-3 -mx-4 md:flex-row md:mx-0 md:py-0">
+                <div class="flex flex-col px-2 py-3 -mx-4 md:flex-row md:mx-0 md:py-0 items-center space-y-8 md:space-y-0">
                     <a href="favorites.html" class="px-2 py-1 text-sm font-medium transition-colors duration-200 transform rounded dark:text-gray-200 hover:bg-gray-900 hover:text-gray-100 md:mx-2">Favorites</a>
-                    <a href="#" class="px-2 py-1 text-sm font-medium transition-colors duration-200 transform rounded dark:text-gray-200 hover:bg-gray-900 hover:text-gray-100 md:mx-2">About</a>
-                    <a href="#" class="px-2 py-1 text-sm font-medium transition-colors duration-200 transform rounded dark:text-gray-200 hover:bg-gray-900 hover:text-gray-100 md:mx-2">Contact</a>
+                    <a href="popular.html" class="px-2 py-1 text-sm font-medium transition-colors duration-200 transform rounded dark:text-gray-200 hover:bg-gray-900 hover:text-gray-100 md:mx-2">Popular</a>
+                    <a href="top.html" class="px-2 py-1 text-sm font-medium transition-colors duration-200 transform rounded dark:text-gray-200 hover:bg-gray-900 hover:text-gray-100 md:mx-2">Top</a>
+                    <a href="horror.html" class="px-2 py-1 text-sm font-medium transition-colors duration-200 transform rounded dark:text-gray-200 hover:bg-gray-900 hover:text-gray-100 md:mx-2">Horror</a>
                 </div>
                 
                 <div class="relative">
@@ -58,8 +58,8 @@
     
     <div class="container mx-auto mt-12 all-cards">
         <div class="container mx-auto mt-12 all-cards">
-            <h1 class="text-4xl text-white font-bold">Top Movies</h1>
-            <div class="bg-red-700 h-1 w-20 mt-2"></div>
+            <h1 class="text-4xl text-white font-bold md:ml-16">Top Movies</h1>
+            <div class="bg-red-700 h-1 w-20 mt-2 md:ml-16"></div>
             <section class="text-gray-400 body-font">
                 <div class="container px-5 py-4 mx-auto">
                   <div class="flex flex-wrap -m-4 top-page-cards">

@@ -9,12 +9,15 @@ function getFavorites(){
 
 function showFavorites(item){
     const cards = document.querySelector('.favorite-cards')
-    cards.innerHTML += `<div class="xl:w-1/4 md:w-1/2 p-4">
-    <div class="rounded-xl w-64">
+    cards.innerHTML += `<div class="xl:w-1/4 md:w-1/2 p-4 mx-auto">
+    <div class="rounded-xl w-32 md:w-64 mx-auto">
         <a onclick="getMovieDetails(${item.id})">
-            <img class="h-full w-64 mx-auto rounded object-cover object-center mb-6" src="https://image.tmdb.org/t/p/w500${item.poster_path}" alt="content">
+            <img class="h-full w-32 md:w-64 mx-auto rounded object-cover object-center mb-6" src="https://image.tmdb.org/t/p/w500${item.poster_path}" alt="content">
         </a>
-        <h2 class="h-14 text-lg text-white font-medium title-font mb-4">${item.title ? item.title : item.name}</h2>
+        <div class="flex flex-col md:flex-row space-x-4 justify-between">
+            <h2 class="h-14 text-lg text-white font-medium title-font mb-4">${item.title ? item.title : item.name}</h2>
+        </div>
+        
     </div>
 </div>`
     

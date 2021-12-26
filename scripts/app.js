@@ -171,7 +171,7 @@ function movieDetailsPage(){
         <div class="w-full h-full bg-opacity-40 bg-gradient-to-r from-black via-transparent to-black absolute"></div>
         `
         document.querySelector(".movie-container").innerHTML = `
-        <section class="text-gray-400 bg-gray-900 body-font">
+        <section class="text-gray-400 bg-black body-font">
             <div class="container mx-auto flex px-5 py-20 md:flex-row flex-col">
                 <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 md:mb-0 mb-10">
                 <img class="object-cover object-center rounded w-3/4 mx-auto" alt="hero" src="https://image.tmdb.org/t/p/original${item.poster_path}">
@@ -223,6 +223,7 @@ function movieDetailsPage(){
 document.querySelector('.searchBtn').addEventListener('keypress', function (e) {
     if (e.key === 'Enter') {
       let userInput = document.querySelector('.searchBtn').value;
+      document.querySelector('.navbar').classList.remove("absolute");
       axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${moviedb_api_key}&language=en-US&query=${userInput}&page=1`)
     .then(res => {
         searchMovies = res.data.results;
@@ -476,15 +477,18 @@ function showMovies(item){
     }   
     
 
-    cards.innerHTML += `<div class="xl:w-1/4 md:w-1/2 p-4">
-                            <div class="rounded-xl w-64">
+    cards.innerHTML += `<div class="xl:w-1/4 md:w-1/2 p-4 mx-auto">
+                            <div class="rounded-xl w-32 md:w-64 mx-auto">
                                 <a onclick="getMovieDetails(${item.id})">
-                                    <img class="h-full w-64 mx-auto rounded object-cover object-center mb-6" src="https://image.tmdb.org/t/p/w500${item.poster_path}" alt="content">
+                                    <img class="h-full w-32 md:w-64 mx-auto rounded object-cover object-center mb-6" src="https://image.tmdb.org/t/p/w500${item.poster_path}" alt="content">
                                 </a>
-                                <h2 class="h-14 text-lg text-white font-medium title-font mb-4">${item.title ? item.title : item.name}</h2>
-                                <button onclick="test(${item.id})" class="favoriteBtn w-10 flex items-center px-2 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-900 rounded-md hover:bg-indigo-500 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-80">
-                                    ${containsObject(item, oldFavorites) ? `<i class="fas fa-heart mx-auto" style="color: Tomato"></i>` : `<i class="fas fa-heart mx-auto"></i>`}
-                                </button>
+                                <div class="flex flex-col md:flex-row space-x-4 justify-between">
+                                    <h2 class="h-14 text-lg text-white font-medium title-font mb-4">${item.title ? item.title : item.name}</h2>
+                                    <button onclick="test(${item.id})" class="favoriteBtn w-10 h-10 hidden md:block flex-none flex items-center px-2 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-900 rounded-md hover:bg-indigo-500 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-80">
+                                        ${containsObject(item, oldFavorites) ? `<i class="fas fa-heart mx-auto" style="color: Tomato"></i>` : `<i class="fas fa-heart mx-auto"></i>`}
+                                    </button>
+                                </div>
+                                
                             </div>
                         </div>`
     
@@ -496,14 +500,17 @@ function showFirstMovie(item){
         document.querySelector('.home-hero').innerHTML = 
         `
         <img src="https://image.tmdb.org/t/p/original${item.backdrop_path}" alt="" class="h-full w-full object-cover absolute">
-        <div class="w-full h-full opacity-90 bg-gradient-to-r from-black via-black absolute"></div>
-        <div class="absolute w-1/2 h-full flex flex-col space-y-10 pl-10 pt-32">
-            <div class="bg-blue-900 rounded w-20 h-10 "><h1 class="font-semibold text-center pt-1 text-xl">Top #1</h1></div>
+        <div class="w-full h-full opacity-90 bg-gradient-to-r from-black via-black to-black md:to-transparent absolute"></div>
+        <div class="absolute md:w-1/2 h-full flex flex-col space-y-10 p-5 md:pl-10 justify-center">
             <h1 class="text-white text-5xl uppercase">${item.title ? item.title : item.name}</h1>
             <p class="mb-8 leading-relaxed">${item.overview}</p>
-            <button onclick="test(${item.id})" class="favoriteBtn w-10 flex items-center px-2 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-900 rounded-md hover:bg-indigo-500 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-80">
-                                    ${containsObject(item, oldFavorites) ? `<i class="fas fa-heart mx-auto" style="color: Tomato"></i>` : `<i class="fas fa-heart mx-auto"></i>`}
-                                </button>
+            <a href='javascript:;' onclick='test(${item.id})' class="bg-blue-900 h-10 w-40 justify-center rounded-xl flex items-center space-x-2">
+                <button  class="favoriteBtn flex items-center font-medium tracking-wide text-white capitalize transition-colors duration-200 transform rounded-md focus:outline-none">
+                    ${containsObject(item, oldFavorites) ? `<i class="fas fa-heart mx-auto" style="color: Tomato"></i>` : `<i class="fas fa-heart mx-auto"></i>`}
+                </button>
+                <h3 class="text-white ">Add to favorites</h3>
+            </a>
+            
         </div>
         `
     }
@@ -521,15 +528,18 @@ function showTopMovies(item){
     }
     
     
-    cards.innerHTML += `<div class="xl:w-1/4 md:w-1/2 p-4">
-                            <div class="rounded-xl w-64">
+    cards.innerHTML += `<div class="xl:w-1/4 md:w-1/2 p-4 mx-auto">
+                            <div class="rounded-xl w-32 md:w-64 mx-auto">
                                 <a onclick="getMovieDetails(${item.id})">
-                                    <img class="h-full w-64 mx-auto rounded object-cover object-center mb-6" src="https://image.tmdb.org/t/p/w500${item.poster_path}" alt="content">
+                                    <img class="h-full w-32 md:w-64 mx-auto rounded object-cover object-center mb-6" src="https://image.tmdb.org/t/p/w500${item.poster_path}" alt="content">
                                 </a>
-                                <h2 class="h-14 text-lg text-white font-medium title-font mb-4">${item.title ? item.title : item.name}</h2>
-                                <button onclick="test(${item.id})" class="favoriteBtn w-10 flex items-center px-2 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-900 rounded-md hover:bg-indigo-500 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-80">
-                                    ${containsObject(item, oldFavorites) ? `<i class="fas fa-heart mx-auto" style="color: Tomato"></i>` : `<i class="fas fa-heart mx-auto"></i>`}
-                                </button>
+                                <div class="flex flex-col md:flex-row space-x-4 justify-between">
+                                    <h2 class="h-14 text-lg text-white font-medium title-font mb-4">${item.title ? item.title : item.name}</h2>
+                                    <button onclick="test(${item.id})" class="favoriteBtn w-10 h-10 hidden md:block flex-none flex items-center px-2 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-900 rounded-md hover:bg-indigo-500 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-80">
+                                        ${containsObject(item, oldFavorites) ? `<i class="fas fa-heart mx-auto" style="color: Tomato"></i>` : `<i class="fas fa-heart mx-auto"></i>`}
+                                    </button>
+                                </div>
+                                
                             </div>
                         </div>`
     
@@ -543,15 +553,18 @@ function showHorrorMovies(item){
         cards = document.querySelector('.horror-page-cards')
     }
         
-    cards.innerHTML += `<div class="xl:w-1/4 md:w-1/2 p-4">
-                            <div class="rounded-xl w-64">
+    cards.innerHTML += `<div class="xl:w-1/4 md:w-1/2 p-4 mx-auto">
+                            <div class="rounded-xl w-32 md:w-64 mx-auto">
                                 <a onclick="getMovieDetails(${item.id})">
-                                    <img class="h-full w-64 mx-auto rounded object-cover object-center mb-6" src="https://image.tmdb.org/t/p/w500${item.poster_path}" alt="content">
+                                    <img class="h-full w-32 md:w-64 mx-auto rounded object-cover object-center mb-6" src="https://image.tmdb.org/t/p/w500${item.poster_path}" alt="content">
                                 </a>
-                                <h2 class="h-14 text-lg text-white font-medium title-font mb-4">${item.title ? item.title : item.name}</h2>
-                                <button onclick="test(${item.id})" class="favoriteBtn w-10 flex items-center px-2 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-900 rounded-md hover:bg-indigo-500 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-80">
-                                    ${containsObject(item, oldFavorites) ? `<i class="fas fa-heart mx-auto" style="color: Tomato"></i>` : `<i class="fas fa-heart mx-auto"></i>`}
-                                </button>
+                                <div class="flex flex-col md:flex-row space-x-4 justify-between">
+                                    <h2 class="h-14 text-lg text-white font-medium title-font mb-4">${item.title ? item.title : item.name}</h2>
+                                    <button onclick="test(${item.id})" class="favoriteBtn w-10 h-10 hidden md:block flex-none flex items-center px-2 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-900 rounded-md hover:bg-indigo-500 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-80">
+                                        ${containsObject(item, oldFavorites) ? `<i class="fas fa-heart mx-auto" style="color: Tomato"></i>` : `<i class="fas fa-heart mx-auto"></i>`}
+                                    </button>
+                                </div>
+                                
                             </div>
                         </div>`
     
@@ -573,6 +586,18 @@ function showCustomMovies(item){
                         </div>`
     
 }
+document.querySelector('.navBtn').addEventListener("click", navbar);
+
+function navbar(){
+    let element = document.querySelector('.navInfo');
+
+    if (element.classList.contains("hidden")){
+        element.classList.remove("hidden")
+    }else{
+        element.classList.add("hidden")
+    }
+}
+
 
 
 // helper
