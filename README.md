@@ -1,5 +1,7 @@
 # movie-app
 
+#### project link : https://mohammadalsukaibi-js-movie-app.netlify.app
+
 ## project overview
 
 A website that shows all the latest movies and you can search for any movie and get details about it, you can also add any movie to your favorites list.
